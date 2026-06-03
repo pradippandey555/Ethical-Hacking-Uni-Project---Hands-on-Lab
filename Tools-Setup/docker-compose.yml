@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # DVWA - Damn Vulnerable Web App
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa-lab
+    ports:
+      - "80:80"
+    environment:
+      - MYSQL_PASS=dvwa
+    networks:
+      - lab-network
+    volumes:
+      - dvwa-data:/var/www/html
+
+  # OWASP WebGoat
+  webgoat:
+    image: webgoat/goatandwolf
+    container_name: webgoat-lab
+    ports:
+      - "8080:8080"
+      - "8090:8090"
+    networks:
+      - lab-network
+    environment:
+      - JAVA_OPTS=-Xmx512m
+
+  # MySQL Database
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-lab
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dvwa
+      MYSQL_USER: dvwa
+      MYSQL_PASSWORD: dvwa
+    ports:
+      - "3306:3306"
+    networks:
+      - lab-network
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+
+volumes:
+  dvwa-data:
+  mysql-data:

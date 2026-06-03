@@ -1,0 +1,26 @@
+# Sample Targets for Practice
+# Educational purposes only
+# Ensure all targets are within your isolated lab network
+
+# Lab Network Targets
+192.168.100.3    DVWA Server (Damn Vulnerable Web App)
+192.168.100.4    WebGoat Server (OWASP)
+192.168.100.5    Metasploitable (Vulnerable Linux)
+192.168.100.6    Windows Target (if available)
+
+# Port ranges commonly targeted:
+# 21 - FTP
+# 22 - SSH
+# 23 - Telnet
+# 25 - SMTP
+# 53 - DNS
+# 80 - HTTP
+# 110 - POP3
+# 143 - IMAP
+# 443 - HTTPS
+# 445 - SMB/Samba
+# 3306 - MySQL
+# 3389 - RDP
+# 5432 - PostgreSQL
+# 8080 - HTTP Alternate
+# 8443 - HTTPS Alternate
